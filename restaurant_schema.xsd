@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="restaurant" type="restaurantType">
+    <xs:key name="uniqueDishId">
+      <xs:selector xpath="menu/dish"/>
+      <xs:field xpath="@id"/>
+    </xs:key>
+    <xs:keyref name="featuredDishRef" refer="uniqueDishId">
+      <xs:selector xpath="featured_item"/>
+      <xs:field xpath="@dish_id"/>
+    </xs:keyref>
+  </xs:element>
+
+  <xs:complexType name="restaurantType">
+    <xs:sequence>
+      <xs:element name="address" type="addressType"/>
+      <xs:element name="opening_hours" type="openingHoursType"/>
+      <xs:element name="menu" type="menuType"/>
+      <xs:element name="reviews" type="reviewsType"/>
+      <xs:element name="featured_item" type="featuredItemType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required"/>
+    <xs:attribute name="restaurant_id" type="xs:ID" use="required"/>
+  </xs:complexType>
+
+  <xs:complexType name="addressType">
+    <xs:sequence>
+      <xs:element name="address_line" type="xs:string"/>
+      <xs:element name="city" type="xs:string"/>
+      <xs:element ref="postal_code"/>
+      <xs:element ref="country"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:element name="postal_code">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:pattern value="[0-9]{4}"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+
+  <xs:element name="country" type="xs:string" default="AUT"/>
+
+  <xs:complexType name="openingHoursType">
+    <xs:sequence>
+      <xs:element name="day" type="dayType" minOccurs="0" maxOccurs="7"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <!-- Modified dayType to include opening hour text -->
+  <xs:complexType name="dayType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="name" type="xs:string" use="required"/>
+        <xs:attribute name="closed" type="xs:boolean" default="false"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="menuType">
+    <xs:sequence>
+      <xs:element name="dish" type="dishType" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="drink" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dishType">
+    <xs:sequence>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="preparation_details" type="preparationDetailsType" minOccurs="0"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+    <xs:attribute name="type" type="xs:string" use="required"/>
+    <xs:attribute name="price" type="xs:decimal" use="required"/>
+  </xs:complexType>
+
+  <!-- Existing definitions remain the same -->
+  <xs:complexType name="preparationDetailsType">
+    <xs:sequence>
+      <xs:element name="detail" type="detailType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="detailType">
+    <xs:sequence>
+      <xs:element name="description" type="descriptionType"/>
+      <xs:element name="ingredients" type="ingredientsType"/>
+      <xs:element name="cooking_style" type="xs:string"/>
+      <xs:element name="dietary_information" type="dietaryInfoType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="descriptionType">
+    <xs:sequence>
+      <xs:element name="note" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ingredientsType">
+    <xs:sequence>
+      <xs:element name="ingredient" type="xs:string" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="dietaryInfoType">
+    <xs:sequence>
+      <xs:element name="is_vegan" type="xs:boolean" default="false"/>
+      <xs:element name="is_gluten_free" type="xs:boolean" default="false"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reviewsType">
+    <xs:sequence>
+      <xs:element name="review" type="reviewType" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="reviewType">
+    <xs:sequence>
+      <xs:element name="content" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="id" type="xs:ID" use="required"/>
+    <xs:attribute name="rating" type="ratingType" use="required"/>
+  </xs:complexType>
+
+  <xs:simpleType name="ratingType">
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="1.0"/>
+      <xs:maxInclusive value="5.0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="featuredItemType">
+    <xs:attribute name="dish_id" type="xs:IDREF" use="required"/>
+  </xs:complexType>
+
+</xs:schema>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<restaurant name="Bergblick" restaurant_id="r2">
+  <address>
+    <address_line>45 Valley Lane</address_line>
+    <city>Salzburg</city>
+    <postal_code>5020</postal_code>
+    <country>AUT</country>
+  </address>
+  <opening_hours>
+    <day name="Monday">09:00 AM - 05:00 PM</day>
+    <day name="Tuesday" closed="true"/>
+    <day name="Wednesday">09:00 AM - 05:00 PM</day>
+    <day name="Thursday">09:00 AM - 05:00 PM</day>
+    <day name="Friday">09:00 AM - 05:00 PM</day>
+    <day name="Saturday">10:00 AM - 04:00 PM</day>
+    <day name="Sunday" closed="true"/>
+  </opening_hours>
+  <menu>
+    <dish id="d2" type="main" price="18.00">
+      <name>Grilled Trout</name>
+      <preparation_details>
+        <detail>
+          <description>
+            <note>Served with seasonal vegetables and lemon butter sauce.</note>
+          </description>
+          <ingredients>
+            <ingredient>Trout</ingredient>
+            <ingredient>Butter</ingredient>
+            <ingredient>Lemon</ingredient>
+            <ingredient>Mixed Vegetables</ingredient>
+          </ingredients>
+          <cooking_style>Grilled</cooking_style>
+          <dietary_information>
+            <is_vegan>false</is_vegan>
+            <is_gluten_free>true</is_gluten_free>
+          </dietary_information>
+        </detail>
+      </preparation_details>
+    </dish>
+    <dish id="d3" type="dessert" price="7.50">
+      <name>Apple Strudel</name>
+    </dish>
+    <drink>Mineral Water</drink>
+    <drink>White Wine</drink>
+  </menu>
+  <reviews>
+    <review id="rev2" rating="5.0">
+      <content>Outstanding service and delicious dishes!</content>
+    </review>
+    <review id="rev3" rating="3.5">
+      <content>Nice ambiance, but the food was a bit salty.</content>
+    </review>
+    <review id="rev4" rating="4.2">
+      <content>Great place, but service was a bit slow.</content>
+    </review>
+  </reviews>
+  <featured_item dish_id="d2"/>
+</restaurant>
