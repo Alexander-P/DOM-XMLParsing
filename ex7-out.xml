@@ -1,57 +1,121 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><restaurant name="Bergblick" restaurant_id="r2">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<restaurant name="Bergblick" restaurant_id="r2">
+    
   <address>
+        
     <address_line>45 Valley Lane</address_line>
+        
     <city>Salzburg</city>
+        
     <postal_code>5020</postal_code>
+        
     <country>AUT</country>
+      
   </address>
+    
   <opening_hours>
+        
     <day closed="false" name="Monday">09:00 AM - 05:00 PM</day>
+        
     <day closed="true" name="Tuesday"/>
+        
     <day closed="false" name="Wednesday">09:00 AM - 05:00 PM</day>
+        
     <day closed="false" name="Thursday">09:00 AM - 05:00 PM</day>
+        
     <day closed="false" name="Friday">09:00 AM - 05:00 PM</day>
+        
     <day closed="false" name="Saturday">10:00 AM - 04:00 PM</day>
+        
     <day closed="true" name="Sunday"/>
+      
   </opening_hours>
+    
   <menu>
+        
     <dish id="d2" price="18.00" type="main">
+            
       <name>Grilled Trout</name>
+            
       <preparation_details>
+                
         <detail>
+                    
           <description>
+                        
             <note>Served with seasonal vegetables and lemon butter sauce.</note>
+                      
           </description>
+                    
           <ingredients>
+                        
             <ingredient>Trout</ingredient>
+                        
             <ingredient>Butter</ingredient>
+                        
             <ingredient>Lemon</ingredient>
+                        
             <ingredient>Mixed Vegetables</ingredient>
+                      
           </ingredients>
+                    
           <cooking_style>Grilled</cooking_style>
+                    
           <dietary_information>
+                        
             <is_vegan>false</is_vegan>
+                        
             <is_gluten_free>true</is_gluten_free>
+                      
           </dietary_information>
+                  
         </detail>
+              
       </preparation_details>
+          
     </dish>
+        
     <dish id="d3" price="7.50" type="dessert">
+            
       <name>Apple Strudel</name>
+          
     </dish>
+        
     <drink>Mineral Water</drink>
+        
     <drink>White Wine</drink>
+      
   </menu>
+    
   <reviews>
+        
     <review id="rev2" rating="5.0">
+            
       <content>Outstanding service and delicious dishes!</content>
+          
     </review>
+        
     <review id="rev3" rating="3.5">
+            
       <content>Nice ambiance, but the food was a bit salty.</content>
+          
     </review>
+        
     <review id="rev4" rating="4.2">
+            
       <content>Great place, but service was a bit slow.</content>
+          
     </review>
+      
   </reviews>
+    
   <featured_item dish_id="d2"/>
-<statistics><averageDishPrice type="dessert" value="7,50"/><averageDishPrice type="main" value="18,00"/><averageRating>4,23</averageRating><ingredientCount>4</ingredientCount><totalOpenHours>38,00</totalOpenHours></statistics></restaurant>
+  
+  <statistics>
+    <averageDishPrice type="dessert" value="7,50"/>
+    <averageDishPrice type="main" value="18,00"/>
+    <averageRating>4,23</averageRating>
+    <ingredientCount>4</ingredientCount>
+    <totalOpenHours>38,00</totalOpenHours>
+  </statistics>
+</restaurant>
